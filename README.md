@@ -1,3 +1,4 @@
-# Stef Starter Template
+# Golf Score
 
-This is a [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/) starter template.
+This is a simple golf score calculator.
+It is used for match playes for 2-4 players and 9-18 holes.
