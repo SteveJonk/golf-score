@@ -7,6 +7,7 @@ import { useState } from 'react'
 
 export default function Home() {
   const [rounds, setRounds] = useState(9)
+  const [score, setScore] = useState(startScore)
   const roundNumbers = Array.from({ length: rounds }, (_, index) => index + 1)
 
   return (
@@ -23,8 +24,8 @@ export default function Home() {
             </div>
           ))}
         </div>
-        <div className={`columns-${startScore.length}`}>
-          {startScore.map((player, index) => (
+        <div className="flex">
+          {score.map((player, index) => (
             <div key={index} className="flex flex-col items-center justify-center">
               <PlayerName name={player.name} />
               <PlayerScore name={player.name} score={player.score} />

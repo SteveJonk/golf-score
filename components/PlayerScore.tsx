@@ -7,7 +7,7 @@ export const PlayerScore = ({ score }: Score) => (
         key={`${score}-${index}`}
         type="number"
         className="flex h-8 w-8 items-center justify-center border border-white bg-gray-900 p-0 text-center"
-        value={point}
+        defaultValue={point}
       />
     ))}
   </div>
