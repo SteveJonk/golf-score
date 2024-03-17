@@ -3,7 +3,10 @@ export const PlayerName = ({ name }: { name: string }) => (
     onChange={(event) => {
       console.log(event.target.value)
     }}
+    onFocus={(event) => {
+      event.target.select()
+    }}
     defaultValue={name}
-    className="mb-2 h-14 w-[65px] overflow-clip border-none bg-gray-900 p-0 text-center focus-visible:outline-none"
+    className="mb-2 h-14 w-[75px] overflow-clip border-none bg-gray-900 p-0 text-center focus:[box-shadow:none] focus-visible:outline-none"
   />
 )

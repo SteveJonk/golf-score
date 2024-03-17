@@ -6,7 +6,7 @@ import { startScore } from '@/data/score'
 import { useState } from 'react'
 
 export default function Home() {
-  const [rounds, setRounds] = useState(9)
+  const [rounds, setRounds] = useState(18)
   const [score, setScore] = useState(startScore)
   const roundNumbers = Array.from({ length: rounds }, (_, index) => index + 1)
 
@@ -16,7 +16,7 @@ export default function Home() {
         My Golf Score
       </h1>
 
-      <div className="max-w flex items-center justify-center">
+      <div className="max-w flex items-center justify-center pb-10">
         <div className="mt-2 flex flex-col gap-2 pt-14 align-bottom">
           {roundNumbers.map((round) => (
             <div key={round} className="flex h-8 w-8 items-center justify-center">
