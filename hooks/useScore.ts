@@ -12,7 +12,7 @@ type ChangeScore = {
 
 export const useScore = (savedScore: Score[]) => {
   const [players, setPlayers] = useState(4)
-  const [rounds, setRounds] = useState(18)
+  const [rounds, setRounds] = useState(9)
   const [score, setScore] = useState(savedScore || getStartScore())
 
   const changeScore = (newScore: ChangeScore) => {
