@@ -9,6 +9,6 @@ export const PlayerName = ({
     onChange={(event) => onChangeName(event.target.value)}
     onFocus={(event) => event.target.select()}
     value={name}
-    className="mb-2 h-14 w-[75px] overflow-clip border-none bg-gray-900 p-0 text-center focus:[box-shadow:none] focus-visible:outline-none"
+    className="mb-2 h-14 w-[75px] overflow-clip border-none bg-white p-0 text-center focus:[box-shadow:none] focus-visible:outline-none dark:bg-gray-900"
   />
 )

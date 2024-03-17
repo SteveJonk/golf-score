@@ -9,9 +9,5 @@ const getSavedScore = (): Score[] => {
 export default function Home() {
   const savedScore = getSavedScore()
 
-  return (
-    <div className="mx-auto w-full max-w-sm">
-      <HomeView savedScore={savedScore} />
-    </div>
-  )
+  return <HomeView savedScore={savedScore} />
 }

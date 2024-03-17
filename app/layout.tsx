@@ -10,10 +10,13 @@ export const metadata: Metadata = {
   },
 }
 
+// suppressHydrationWarning is used to suppress the warning about the mismatch between the server and client markup (https://github.com/pacocoursey/next-themes)
+// This happens one level deep according to the documentation
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className="h-full scroll-smooth">
-      <body className="h-full bg-gray-900 text-white antialiased">{children}</body>
+    <html lang="en" className="h-full scroll-smooth" suppressHydrationWarning>
+      <body className="h-full antialiased">{children}</body>
     </html>
   )
 }

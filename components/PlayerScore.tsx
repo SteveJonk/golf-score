@@ -17,7 +17,7 @@ export const PlayerScore = ({ playerScore, rounds, onChangeScore }: PlayerScoreP
       <input
         key={`${playerScore.name}-${index}`}
         type="number"
-        className="flex h-8 w-8 items-center justify-center border border-white bg-gray-900 p-0 text-center"
+        className="flex h-8 w-8 items-center justify-center border border-gray-900 p-0 text-center dark:border-white dark:bg-gray-900"
         value={point}
         onFocus={(event) => {
           event.target.select()
@@ -30,7 +30,7 @@ export const PlayerScore = ({ playerScore, rounds, onChangeScore }: PlayerScoreP
         }}
       />
     ))}
-    <div className="flex h-8 w-8 items-center justify-center text-white">
+    <div className="flex h-8 w-8 items-center justify-center text-gray-900 dark:text-white">
       {playerScore.total.toString()}
     </div>
   </div>
