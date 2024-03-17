@@ -32,10 +32,10 @@ export default function Home() {
           ))}
         </div>
         <div className="flex">
-          {score.map((player, index) => (
+          {score.slice(0, players).map((player, index) => (
             <div key={index} className="flex flex-col items-center justify-center">
               <PlayerName name={player.name} />
-              <PlayerScore name={player.name} score={player.score} />
+              <PlayerScore playerScore={player} rounds={rounds} />
             </div>
           ))}
         </div>

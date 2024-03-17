@@ -15,27 +15,29 @@ export const GameManagement = ({ players, rounds, setPlayers, setRounds }: GameM
     <div>
       <p className="mb-2 text-center">Select Players</p>
       <div className="mb-4 flex justify-center gap-2">
-        {playerOptions.map((player) => (
+        {playerOptions.map((playerOption) => (
           <Button
-            key={player}
+            key={playerOption}
             onClick={() => {
-              setPlayers(player)
+              setPlayers(playerOption)
             }}
+            selected={playerOption === players}
           >
-            {player}
+            {playerOption}
           </Button>
         ))}
       </div>
       <p className="mb-2 text-center">Select Rounds</p>
       <div className="flex justify-center gap-2">
-        {roundOptions.map((round) => (
+        {roundOptions.map((roundOption) => (
           <Button
-            key={round}
+            key={roundOption}
             onClick={() => {
-              setRounds(round)
+              setRounds(roundOption)
             }}
+            selected={roundOption === rounds}
           >
-            {round}
+            {roundOption}
           </Button>
         ))}
       </div>
