@@ -20,7 +20,7 @@ export const HomeView = ({ savedScore }: HomeViewProps) => {
 
   return (
     <Providers>
-      <div className="h-full pt-8 dark:bg-gray-900 dark:text-white">
+      <div className="h-full pt-8">
         <ThemeSwitch />
         <div className="mx-auto w-full max-w-sm">
           <h1 className="mx-auto mb-8 mt-8 block w-fit border border-white px-5 py-2 text-center text-4xl">

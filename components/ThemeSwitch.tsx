@@ -18,8 +18,10 @@ export const ThemeSwitch = () => {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
+        height="20"
+        width="20"
         fill="currentColor"
-        className="bg-gray-900 text-gray-900 dark:text-gray-100"
+        className="text-gray-900 dark:text-white"
       >
         {mounted && (theme === 'dark' || resolvedTheme === 'dark') ? (
           <path
