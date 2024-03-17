@@ -11,19 +11,21 @@ type HomeViewProps = {
 }
 
 export const HomeView = ({ savedScore }: HomeViewProps) => {
-  const { score, changeScore, players, rounds, setRounds, setPlayers } = useScore(savedScore)
+  const { score, changeScore, changeName, resetGame, players, rounds, setRounds, setPlayers } =
+    useScore(savedScore)
   const roundNumbers = Array.from({ length: rounds }, (_, index) => index + 1)
 
   return (
-    <div className="mx-auto w-full max-w-sm">
+    <>
       <h1 className="mx-auto mb-8 mt-8 block w-fit border border-white px-5 py-2 text-center text-4xl">
         My Golf Score
       </h1>
       <GameManagement
         players={players}
         rounds={rounds}
-        setPlayers={(players) => setPlayers(players)}
-        setRounds={(rounds) => setRounds(rounds)}
+        onChangePlayers={(players) => setPlayers(players)}
+        onChangeRounds={(rounds) => setRounds(rounds)}
+        onResetGame={resetGame}
       />
       <div className="max-w flex items-center justify-start pb-10">
         <div className="mt-2 flex flex-col gap-2 pb-10 pt-14 align-bottom">
@@ -36,7 +38,10 @@ export const HomeView = ({ savedScore }: HomeViewProps) => {
         <div className="flex">
           {score.slice(0, players).map((player, index) => (
             <div key={index} className="flex flex-col items-center justify-center">
-              <PlayerName name={player.name} />
+              <PlayerName
+                name={player.name}
+                onChangeName={(newName) => changeName(index, newName)}
+              />
               <PlayerScore
                 playerScore={player}
                 rounds={rounds}
@@ -48,6 +53,6 @@ export const HomeView = ({ savedScore }: HomeViewProps) => {
           ))}
         </div>
       </div>
-    </div>
+    </>
   )
 }

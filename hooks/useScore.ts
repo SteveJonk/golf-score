@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Score, startScore } from '@/data/score'
+import { Score, getStartScore } from '@/data/score'
 import Cookie from 'js-cookie'
 
 type ChangeScore = {
@@ -13,7 +13,7 @@ type ChangeScore = {
 export const useScore = (savedScore: Score[]) => {
   const [players, setPlayers] = useState(4)
   const [rounds, setRounds] = useState(18)
-  const [score, setScore] = useState(savedScore || startScore)
+  const [score, setScore] = useState(savedScore || getStartScore())
 
   const changeScore = (newScore: ChangeScore) => {
     const newScoreArray = [...score]
@@ -26,5 +26,17 @@ export const useScore = (savedScore: Score[]) => {
     Cookie.set('golf_score', JSON.stringify(newScoreArray))
   }
 
-  return { score, changeScore, players, setPlayers, rounds, setRounds }
+  const changeName = (playerIndex: number, newName: string) => {
+    const newScoreArray = [...score]
+    newScoreArray[playerIndex].name = newName
+    setScore(newScoreArray)
+    Cookie.set('golf_score', JSON.stringify(newScoreArray))
+  }
+
+  const resetGame = () => {
+    Cookie.remove('golf_score')
+    setScore(getStartScore())
+  }
+
+  return { score, changeScore, changeName, resetGame, players, setPlayers, rounds, setRounds }
 }

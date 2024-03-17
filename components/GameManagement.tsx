@@ -3,14 +3,25 @@ import { Button } from '@/components/Button'
 type GameManagementProps = {
   players: number
   rounds: number
-  setPlayers: (players: number) => void
-  setRounds: (rounds: number) => void
+  onChangePlayers: (players: number) => void
+  onChangeRounds: (rounds: number) => void
+  onResetGame: () => void
 }
 
 const playerOptions = [1, 2, 3, 4]
 const roundOptions = [9, 18]
 
-export const GameManagement = ({ players, rounds, setPlayers, setRounds }: GameManagementProps) => {
+export const GameManagement = ({
+  players,
+  rounds,
+  onChangePlayers,
+  onChangeRounds,
+  onResetGame,
+}: GameManagementProps) => {
+  const handleResetGame = () => {
+    window.confirm('Are you sure you want to start a new round?') && onResetGame()
+  }
+
   return (
     <div>
       <p className="mb-2 text-center">Select Players</p>
@@ -19,7 +30,7 @@ export const GameManagement = ({ players, rounds, setPlayers, setRounds }: GameM
           <Button
             key={playerOption}
             onClick={() => {
-              setPlayers(playerOption)
+              onChangePlayers(playerOption)
             }}
             selected={playerOption === players}
           >
@@ -33,7 +44,7 @@ export const GameManagement = ({ players, rounds, setPlayers, setRounds }: GameM
           <Button
             key={roundOption}
             onClick={() => {
-              setRounds(roundOption)
+              onChangeRounds(roundOption)
             }}
             selected={roundOption === rounds}
           >
@@ -41,6 +52,9 @@ export const GameManagement = ({ players, rounds, setPlayers, setRounds }: GameM
           </Button>
         ))}
       </div>
+      <Button className="mx-auto mt-6 w-fit px-4" onClick={handleResetGame}>
+        Start New Round
+      </Button>
       <hr className="mx-auto my-8 h-px w-3/4 border-0 bg-gray-500" />
     </div>
   )

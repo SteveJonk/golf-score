@@ -13,6 +13,7 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './pages/**/*.tsx',
     './components/**/*.tsx',
+    './views/**/*.tsx',
     './layouts/**/*.tsx',
     './lib/**/*.ts',
     './data/**/*.mdx',
@@ -30,7 +31,7 @@ module.exports = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['InterVariable', ...defaultTheme.fontFamily.sans],
+        sans: [...defaultTheme.fontFamily.sans],
       },
       colors: {
         primary: colors.blue,
