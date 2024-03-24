@@ -4,17 +4,17 @@ import { PlayerName } from '@/components/PlayerName'
 import { PlayerScore } from '@/components/PlayerScore'
 import { GameManagement } from '@/components/GameManagement'
 import { useScore } from '@/hooks/useScore'
-import { Score } from '@/data/score'
+import { Config } from '@/data/score'
 import { Providers } from '@/components/Providers'
 import { ThemeSwitch } from '@/components/ThemeSwitch'
 
 type HomeViewProps = {
-  savedScore: Score[]
+  config: Config
 }
 
-export const HomeView = ({ savedScore }: HomeViewProps) => {
+export const HomeView = ({ config }: HomeViewProps) => {
   const { score, changeScore, changeName, resetGame, players, rounds, setRounds, setPlayers } =
-    useScore(savedScore)
+    useScore(config)
   const roundNumbers = Array.from({ length: rounds }, (_, index) => index + 1)
 
   return (

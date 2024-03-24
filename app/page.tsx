@@ -1,13 +1,12 @@
-import { Score } from '@/data/score'
+import { Config } from '@/data/score'
 import { HomeView } from '@/views/HomeView'
 import { cookies } from 'next/headers'
 
-const getSavedScore = (): Score[] => {
+const getSavedValues = (): Config => {
   return JSON.parse(cookies().get('golf_score')?.value || null)
 }
 
 export default function Home() {
-  const savedScore = getSavedScore()
-
-  return <HomeView savedScore={savedScore} />
+  const config = getSavedValues()
+  return <HomeView config={config} />
 }
