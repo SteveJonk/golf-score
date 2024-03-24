@@ -56,8 +56,6 @@ export const useScore = (config: Config | undefined) => {
 
   const resetGame = () => {
     setScore(getStartScore())
-    setPlayers(config?.players)
-    setRounds(config?.rounds)
     Cookie.remove('golf_score')
   }
 
