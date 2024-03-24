@@ -32,14 +32,14 @@ export const useScore = (savedScore: Score[]) => {
       .slice(0, rounds)
       .reduce((acc: number, score: number) => acc + score, 0)
     setScore(newScoreArray)
-    Cookie.set('golf_score', JSON.stringify(newScoreArray))
+    Cookie.set('golf_score', JSON.stringify(newScoreArray), { expires: 365 })
   }
 
   const changeName = (playerIndex: number, newName: string) => {
     const newScoreArray = [...score]
     newScoreArray[playerIndex].name = newName
     setScore(newScoreArray)
-    Cookie.set('golf_score', JSON.stringify(newScoreArray))
+    Cookie.set('golf_score', JSON.stringify(newScoreArray), { expires: 365 })
   }
 
   const resetGame = () => {

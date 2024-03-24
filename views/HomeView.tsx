@@ -6,7 +6,6 @@ import { GameManagement } from '@/components/GameManagement'
 import { useScore } from '@/hooks/useScore'
 import { Score } from '@/data/score'
 import { Providers } from '@/components/Providers'
-import { useTheme } from 'next-themes'
 import { ThemeSwitch } from '@/components/ThemeSwitch'
 
 type HomeViewProps = {
