@@ -10,10 +10,10 @@ type ChangeScore = {
   value: number
 }
 
-export const useScore = (config: Config) => {
-  const [players, setPlayers] = useState(config.players || 4)
-  const [rounds, setRounds] = useState(config.rounds || 9)
-  const [score, setScore] = useState(config.score || getStartScore())
+export const useScore = (config: Config | undefined) => {
+  const [players, setPlayers] = useState(config?.players || 4)
+  const [rounds, setRounds] = useState(config?.rounds || 9)
+  const [score, setScore] = useState(config?.score || getStartScore())
   useEffect(() => {
     const recalculateScore = (score: Score[]) => {
       return score.map((player) => {
