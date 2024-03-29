@@ -83,6 +83,7 @@ export const HomeView = ({ config }: HomeViewProps) => {
           <Button className="mx-auto w-fit px-4" onClick={handleDownload}>
             Download Score
           </Button>
+          <br />
         </div>
       </div>
     </Providers>
