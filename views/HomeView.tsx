@@ -7,6 +7,9 @@ import { useScore } from '@/hooks/useScore'
 import { Config } from '@/data/score'
 import { Providers } from '@/components/Providers'
 import { ThemeSwitch } from '@/components/ThemeSwitch'
+import { Button } from '@/components/Button'
+import { createFileName, useScreenshot } from 'use-react-screenshot'
+import { useRef } from 'react'
 
 type HomeViewProps = {
   config: Config
@@ -15,6 +18,25 @@ type HomeViewProps = {
 export const HomeView = ({ config }: HomeViewProps) => {
   const { score, changeScore, changeName, resetGame, players, rounds, setRounds, setPlayers } =
     useScore(config)
+
+  const [_image, takeScreenshot] = useScreenshot({
+    type: 'image/jpeg',
+    quality: 2.0,
+  })
+
+  const screenShotRef = useRef(null)
+
+  const download = (image: any, { name = 'My Golf Score', extension = 'jpg' } = {}) => {
+    const a = document.createElement('a')
+    a.href = image
+    a.download = createFileName(extension, name)
+    a.click()
+  }
+
+  const handleDownload = () => {
+    takeScreenshot(screenShotRef.current).then(download)
+  }
+
   const roundNumbers = Array.from({ length: rounds }, (_, index) => index + 1)
 
   return (
@@ -40,7 +62,7 @@ export const HomeView = ({ config }: HomeViewProps) => {
                 </div>
               ))}
             </div>
-            <div className="flex">
+            <div className="flex pb-2 dark:bg-gray-900 dark:text-white" ref={screenShotRef}>
               {score.slice(0, players).map((player, index) => (
                 <div key={index} className="flex flex-col items-center justify-center">
                   <PlayerName
@@ -58,6 +80,9 @@ export const HomeView = ({ config }: HomeViewProps) => {
               ))}
             </div>
           </div>
+          <Button className="mx-auto w-fit px-4" onClick={handleDownload}>
+            Download Score
+          </Button>
         </div>
       </div>
     </Providers>
